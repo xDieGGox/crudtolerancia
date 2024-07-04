@@ -1,0 +1,52 @@
+<div class="formulario-mascotas">
+    <h2>Formulario para mascotas</h2>
+    <form> 
+      <div class="form-group">
+        <label for="numero_recarga">Especie:</label>
+        <input type="text" id="especie" name="especie" [(ngModel)]="mascota.especie">
+      </div>
+      <div class="form-group">
+        <label for="numero_recarga">Raza:</label>
+        <input type="text" id="raza" name="raza" [(ngModel)]="mascota.raza">
+      </div>
+      
+      <div class="form-group">
+        <label for="monto">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="mascota.nombre">
+      </div>
+      
+    </form>
+    <button (click)="guardarMascota()" class="btn btn-primary">Guardar Mascota</button>
+    <button (click)="enviarCorreo()" class="btn btn-primary">Enviar Correo</button>
+</div>
+
+<div class="contenedor-mascotas">
+    <div class="titulo-mascotas">
+      <h2>Mascotas</h2>
+    </div>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Codigo</th>
+          <th>Especie</th>
+          <th>Raza</th>
+          <th>Nombre</th>
+          <th>Accion</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mas of mascotas | async">
+          <td>{{ mas.codigo_mascota }}</td>
+          <td>{{ mas.especie }}</td>
+          <td>{{ mas.raza }}</td>
+          <td>{{ mas.nombre }}</td>
+          <td>
+            <button (click)="eliminarMascota(mas)" class="btn btn-primary">Eliminar</button>
+            <button (click)="cargarMascota(mas)" class="btn btn-secondary">Editar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
